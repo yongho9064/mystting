@@ -1,0 +1,92 @@
+"" Source your .vimrc
+"source ~/.vimrc
+
+let mapleader = " "
+set clipboard+=unnamed
+set ignorecase
+set smartcase
+set scrolloff=5
+set highlightedyank
+set incsearch
+set endcoding=utf-8
+set visualbell
+set noerrorbells
+set autoindent
+set hlsearch
+set incsearch
+set ideajoin
+set mouse=a
+set idearefactormode=keep
+
+" plugin here
+set quickscope
+set NERDTree
+set multiple-cursors
+set easymotion
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+noremap j h
+noremap i k
+noremap k j
+noremap h i
+vnoremap v <Esc>
+noremap J ^
+noremap L $
+imap jk <ESC>
+imap ㅓㅏ <Esc>
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+
+nnoremap <esc> :noh<cr>:w<cr><esc>
+inoremap <Esc> <Esc>:w<CR>
+
+noremap <leader>kz :action ToggleZenMode<CR>
+
+nnoremap <leader>a ggVG
+vnoremap <leader>a ggVG
+
+nnoremap <leader>l gt
+nnoremap <leader>j gT
+
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
+
+" goto Error and Declaration"
+nmap gb <Action>(Back)
+nmap gD <Action>(GotoTypeDeclaration)
+nmap gf <Action>(Forward)
+nmap gl <Action>(QuickJavaDoc)
+nmap gL <Action>(QuickImplementations)
+nmap gn <Action>(GotoNextError)
+nmap gp <Action>(GotoPreviousError)
+nmap gy <Action>(ShowErrorDescription)
+
+"Editor indent"
+nmap > <S-v>:action EditorIndentSelection<cr>
+nmap < <S-v>:action EditorUnindentSelection<cr>
+vmap > <Action>(EditorIndentSelection)
+vmap < <Action>(EditorUnindentSelection)
+
+"행 이동"
+nnoremap <C-k> :m +1<CR>
+nnoremap <C-i> :m -2<CR>
+vnoremap <C-k> :m +1<CR>
+vnoremap <C-i> :m -2<CR>
+inoremap <C-k> <Esc>:m +1<CR>gi
+inoremap <C-i> <Esc>:m -2<CR>gi
+
+" edit ideavim config
+nnoremap <leader>vv :e ~/.ideavimrc<CR>
+nnoremap <leader>vr :source ~/.ideavimrc<CR>
+
+" Closing tabs
+nmap <leader>q :action CloseContent<cr>
+nmap <leader>Q :action CloseAllEditorsButActive<cr>
+"nmap <leader>Q :action ReopenClosedTab<cr>
+
+
+" Navigation
+nmap <leader>f :action GotoFile<cr>
+nmap <leader>b :action ShowBookmarks<cr>
+

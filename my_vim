@@ -52,6 +52,8 @@ nnoremap <leader>j gT
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
 
+map <leader>gn <Action>(SelectAllOccurrences)
+
 " goto Error and Declaration"
 nmap gb <Action>(Back)
 nmap gD <Action>(GotoTypeDeclaration)
@@ -71,8 +73,8 @@ vmap < <Action>(EditorUnindentSelection)
 "행 이동"
 nnoremap <C-k> :m +1<CR>
 nnoremap <C-i> :m -2<CR>
-vnoremap <C-k> :m +1<CR>
-vnoremap <C-i> :m -2<CR>
+vnoremap <C-k> :action MoveStatementDown<CR>
+vnoremap <C-i> :action MoveStatementUp<CR>
 inoremap <C-k> <Esc>:m +1<CR>gi
 inoremap <C-i> <Esc>:m -2<CR>gi
 
@@ -89,4 +91,8 @@ nmap <leader>Q :action CloseAllEditorsButActive<cr>
 " Navigation
 nmap <leader>f :action GotoFile<cr>
 nmap <leader>b :action ShowBookmarks<cr>
+
+" 맨위 이동 맨 아래 이동
+nmap I gg
+nmap K G 
 

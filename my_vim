@@ -104,3 +104,4 @@ noremap k jzz
 noremap i kzz
 
 nmap A Vdio
+nmap <leader>; :action FileStructurePopup<cr>

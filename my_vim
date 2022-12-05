@@ -96,3 +96,11 @@ nmap <leader>b :action ShowBookmarks<cr>
 nmap I gg
 nmap K G 
 
+" 중간으로 이동
+nmap D <C-d>
+namp U <C-u>
+
+noremap k jzz
+noremap i kzz
+
+nmap A Vdio

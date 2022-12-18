@@ -105,3 +105,6 @@ noremap i kzz
 
 nmap A Vdio
 nmap <leader>; :action FileStructurePopup<cr>
+
+vmap K G
+vmap I gg

@@ -1,6 +1,10 @@
 "" Source your .vimrc
 "source ~/.vimrc
 
+" english auto change
+let keep_input_source_in_normal=ABC 
+set keep-english-in-normal
+
 let mapleader = " "
 set clipboard+=unnamed
 set ignorecase
@@ -23,6 +27,7 @@ set quickscope
 set NERDTree
 set multiple-cursors
 set easymotion
+
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
@@ -98,7 +103,7 @@ nmap K G
 
 " 중간으로 이동
 nmap D <C-d>
-namp U <C-u>
+nmap U <C-u>
 
 noremap k jzz
 noremap i kzz
@@ -108,3 +113,5 @@ nmap <leader>; :action FileStructurePopup<cr>
 
 vmap K G
 vmap I gg
+
+

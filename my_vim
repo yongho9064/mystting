@@ -1,65 +1,108 @@
-"" Source your .vimrc
-"source ~/.vimrc
-
-" english auto change
-let keep_input_source_in_normal=ABC 
-set keep-english-in-normal
+" :source ~/.vimrc
+" 현재 .vimrc 파일을 재적용
 
 let mapleader = " "
-set clipboard+=unnamed
-set ignorecase
-set smartcase
-set scrolloff=5
-set highlightedyank
-set incsearch
-set endcoding=utf-8
-set visualbell
-set noerrorbells
-set autoindent
-set hlsearch
-set incsearch
-set ideajoin
-set mouse=a
-set idearefactormode=keep
+" 리더 키를 공백으로 설정
 
-" plugin here
+set clipboard+=unnamed
+" 시스템 클립보드와 연동하여 복사/붙여넣기
+
+set ignorecase
+" 대소문자를 무시하고 검색
+
+set smartcase
+" 대문자가 포함된 경우 대소문자 구분 검색
+
+set scrolloff=5
+" 커서가 화면의 5줄 위/아래로 이동 시 스크롤
+
+set highlightedyank
+" 복사한 텍스트를 강조 표시
+
+set incsearch
+" 검색 중 입력한 텍스트에 맞춰 결과를 실시간으로 표시
+
+set encoding=utf-8
+" 파일 인코딩을 UTF-8로 설정
+
+set visualbell
+" 소리 대신 화면 깜박임으로 경고
+
+set noerrorbells
+" 오류 발생 시 벨 소리 비활성화
+
+set autoindent
+" 자동 들여쓰기 활성화
+
+set hlsearch
+" 검색 결과 강조 표시
+
+set ideajoin
+" 코드의 줄을 합치는 IDE 설정
+
+set mouse=a
+" 모든 모드에서 마우스 사용 가능
+
+set idearefactormode=keep
+" IDE 리팩토링 모드를 유지
+
+" Plugin settings
 set quickscope
+" Quickscope 플러그인 활성화
+
 set NERDTree
+" NERDTree 플러그인 활성화
+
 set multiple-cursors
-set easymotion
+" Multiple Cursors 플러그인 활성화
+
+set easymotionC
+" EasyMotion 플러그인 활성화
 
 " Don't use Ex mode, use Q for formatting.
 map Q gq
+" Q 키를 텍스트 포맷팅에 사용
 
-noremap j h
-noremap i k
-noremap k j
-noremap h i
 vnoremap v <Esc>
-noremap J ^
+" 비주얼 모드에서 Esc 키로 모드 종료
+
+noremap H ^
 noremap L $
+" J와 L 키를 각각 줄의 시작과 끝으로 매핑
+
 imap jk <ESC>
+" 입력 모드에서 jk를 눌러 Esc로 전환
+
 imap ㅓㅏ <Esc>
+" 입력 모드에서 ㅓㅏ를 눌러 Esc로 전환 (한국어 입력기 전환)
+
 nmap <S-Enter> O<Esc>
+" Shift + Enter로 새로운 줄 추가 후 Esc로 모드 종료
+
 nmap <CR> o<Esc>
+" Enter로 새로운 줄 추가 후 Esc로 모드 종료
 
 nnoremap <esc> :noh<cr>:w<cr><esc>
+" Esc 키로 검색 하이라이트 제거 후 저장
+
 inoremap <Esc> <Esc>:w<CR>
+" 입력 모드에서 Esc로 모드 전환 후 저장
 
 noremap <leader>kz :action ToggleZenMode<CR>
-
-nnoremap <leader>a ggVG
-vnoremap <leader>a ggVG
+" 리더 키 + kz로 Zen 모드 전환
 
 nnoremap <leader>l gt
-nnoremap <leader>j gT
+nnoremap <leader>h gT
+" 리더 키 + l과 j로 탭 전환
 
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
+" [[과 ]]로 메서드 이동
 
 map <leader>gn <Action>(SelectAllOccurrences)
+" 리더 키 + gn으로 모든 발생 선택
 
-" goto Error and Declaration"
+" Navigation to errors and declarations
 nmap gb <Action>(Back)
 nmap gD <Action>(GotoTypeDeclaration)
 nmap gf <Action>(Forward)
@@ -68,50 +111,68 @@ nmap gL <Action>(QuickImplementations)
 nmap gn <Action>(GotoNextError)
 nmap gp <Action>(GotoPreviousError)
 nmap gy <Action>(ShowErrorDescription)
+" 오류와 선언으로 이동하는 단축키
 
-"Editor indent"
+" Editor indent
 nmap > <S-v>:action EditorIndentSelection<cr>
 nmap < <S-v>:action EditorUnindentSelection<cr>
 vmap > <Action>(EditorIndentSelection)
 vmap < <Action>(EditorUnindentSelection)
+" 선택된 텍스트의 들여쓰기 및 내어쓰기를 설정
 
-"행 이동"
-nnoremap <C-k> :m +1<CR>
-nnoremap <C-i> :m -2<CR>
-vnoremap <C-k> :action MoveStatementDown<CR>
-vnoremap <C-i> :action MoveStatementUp<CR>
-inoremap <C-k> <Esc>:m +1<CR>gi
-inoremap <C-i> <Esc>:m -2<CR>gi
+" 행 이동
+nnoremap <C-j> :m +1<CR>
+nnoremap <C-k> :m -2<CR>
+vnoremap <C-j> :action MoveStatementDown<CR>
+vnoremap <C-k> :action MoveStatementUp<CR>
+inoremap <C-j> <Esc>:m +1<CR>gi
+inoremap <C-k> <Esc>:m -2<CR>gi
+" 행을 위로 또는 아래로 이동하는 단축키
 
-" edit ideavim config
+" Edit ideavim config
 nnoremap <leader>vv :e ~/.ideavimrc<CR>
 nnoremap <leader>vr :source ~/.ideavimrc<CR>
+" 리더 키 + vv로 ideavimrc 파일 열기 및 리더 키 + vr로 소스 재적용
 
 " Closing tabs
 nmap <leader>q :action CloseContent<cr>
 nmap <leader>Q :action CloseAllEditorsButActive<cr>
-"nmap <leader>Q :action ReopenClosedTab<cr>
-
+" 리더 키 + q로 현재 탭 닫기, Q로 다른 모든 탭 닫기
 
 " Navigation
 nmap <leader>f :action GotoFile<cr>
 nmap <leader>b :action ShowBookmarks<cr>
+" 리더 키 + f와 b로 파일 및 북마크로 이동
 
-" 맨위 이동 맨 아래 이동
-nmap I gg
-nmap K G 
+" 맨 위와 맨 아래로 이동
+nmap K gg
+nmap J G
+" I로 문서 맨 위로, K로 문서 맨 아래로 이동
 
 " 중간으로 이동
 nmap D <C-d>
 nmap U <C-u>
-
-noremap k jzz
-noremap i kzz
+" D와 U로 화면 중간으로 스크롤
 
 nmap A Vdio
+" A 키를 Vdio 명령어에 매핑
+
 nmap <leader>; :action FileStructurePopup<cr>
+" 리더 키 + ;로 파일 구조 팝업 열기
 
 vmap K G
 vmap I gg
+" 비주얼 모드에서 K와 I로 각각 줄의 끝과 문서 맨 위로 이동
 
+:noremap <S-p> p<CR>
+nnoremap <D-M-m> i
+nnoremap <A-w> :close<CR>
+" Shift + p로 붙여넣기, D-M-m으로 입력 모드 전환, Ctrl + w로 현재 창 닫기
 
+vnoremap <S-K> ggk
+vnoremap <S-J> G
+" 비주얼 모드에서 v + Shift + k로 선택된 텍스트를 위로 이동
+
+set timeoutlen=150
+" set ttimeoutlen=10
+" set updatetime=300
